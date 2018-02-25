@@ -1,6 +1,10 @@
 PImage img;  
+import processing.sound.*;
 
 ArrayList<String> imgNames = new ArrayList<String>();
+
+SoundFile file;
+
 
 int savedTime;
 int totalTime = 5000;
@@ -18,12 +22,16 @@ void setup() {
   
   
   img = loadImage(imgNames.get(photoStartMark));
+  file = new SoundFile(this, "clip.mp3");
+  file.loop();
+  //println(file.channels());
   savedTime = millis();
-  println(imgNames.size());
+  //println(imgNames.size());
 }
 
 void draw() {
   background(0);
+
   img.resize(width,height);
   // Draw the image to the screen at coordinate (0,0)
   image(img, 0, 0);
@@ -34,14 +42,16 @@ void draw() {
     
     if (photoStartMark < imgNames.size()-1){ //<>//
       photoStartMark += 1;
-      println(photoStartMark);
+      //println(photoStartMark);
       
     } else {
       photoStartMark = 0;
-      println(photoStartMark); //<>//
+      //println(photoStartMark); //<>//
     }
   
     img = loadImage(imgNames.get(photoStartMark));
     savedTime = millis();
   }
+  
+  
 }
