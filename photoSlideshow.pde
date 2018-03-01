@@ -37,10 +37,10 @@ void draw() {
   
   if(img.width>= img.height){
     //landscape
-    img.resize(width,height);    
+    img.resize(width,(img.height/img.width)*(width/height));    
   } else{
     //portrait
-    img.resize( img.width/img.height*height, height);
+    img.resize( (img.width/img.height)*(height/img.height), height);
   }
   // Draw the image to the screen according image's center
   image(img, width/2, height/2);
